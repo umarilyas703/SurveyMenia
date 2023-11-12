@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+$primary: #1b4194;
+$secondary: black;
+$my-color: #2e5c9c;
+
+@import "../node_modules/bootstrap-scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
+@import "./main.scss";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

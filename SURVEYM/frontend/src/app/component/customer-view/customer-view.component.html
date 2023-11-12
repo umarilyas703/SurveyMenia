@@ -1,0 +1,40 @@
+<div class="logo" (click)="redirectHome()">
+  <img src="assets\images\survey_logo.png" alt="">
+</div>
+<div class="customer-drop">
+    <div ngbDropdown class="d-inline-block lang">
+    <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="currentCustomer">{{currentCustomer}}</button>
+    <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentCustomer">Select Customer</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+        <button class="btn btn-primary" ngbDropdownItem  *ngFor="let cust of customers" [routerLink] = "['/lang/customers/', cust._id]">
+        {{cust.title}}
+        </button>
+    </div>
+    </div>
+</div>
+<div *ngIf="currentCustomer">
+    <table class="table table-striped table-dark container">
+        <thead>
+          <tr>
+            <th scope="col">Client Name</th>
+            <th scope="col">Client ID</th>
+            <th scope="col">Category</th>
+            <th scope="col">Domain</th>
+            <th scope="col">Question</th>
+            <th scope="col">Response</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let res of responses">
+          <tr>
+            <th scope="row">{{currentCustomer}}</th>
+            <th scope="row">{{res.clientId}}</th>
+            <th scope="row">{{res.categoryName}}</th>
+            <td>{{res.domainName}}</td>
+            <td>{{res.question}}</td>
+            <td>{{res.response}}</td>
+            <td>{{res.date}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

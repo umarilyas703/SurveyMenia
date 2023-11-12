@@ -1,0 +1,32 @@
+<div class="logo">
+    <img src="assets\images\centrims_logo.jpg" alt="">
+</div>
+
+<div class="centered-content">
+    <div class="login-manager-container">
+        <div class="window">
+            <div class="loginForm">
+                <form [formGroup]="loginForm">
+                    <h1 class="has-text-primary white-text">Log in</h1>
+
+                    <label for="uname" class="has-text-primary white-text"><b>Email</b></label>
+                    <input formControlName="email" [(ngModel)]="username" username="username" type="text" placeholder="Enter Email" name="uname" required>
+
+                    <label for="psw" class="has-text-primary white-text"><b>Password</b></label>
+                    <input formControlName="password" [(ngModel)]="password" password="password" type="password" placeholder="Enter Password" name="psw" required>
+
+                    <div class="button-center">
+                        <button type="submit" class="btn btn-primary add-button" (click)="onSuccessfulLogin()">Login</button>
+                        
+                        
+                    </div>
+                    <div class="button-center">
+                        <button class="btn btn-primary add-button" (click)="registerForm()"> Don't have account? Signup</button>
+                    </div>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
