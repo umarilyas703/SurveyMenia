@@ -7,6 +7,7 @@ import Domain from 'src/app/models/domain';
 import { QuestionsService } from 'src/app/services/questions.service';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-questions-view',
   templateUrl: './questions-view.component.html',
@@ -24,15 +25,23 @@ export class QuestionsViewComponent implements OnInit {
   domainId: string;
   tempCategoryIdHolder: string;
   user: Object;
+  userId: string;
+  userName: string;
 
   constructor(
     private questionService: QuestionsService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    
     ) { }
 
   ngOnInit() {
+
+    this.userId = this.authService.getLoggedInUserId();
+    this.userName = this.authService.getLoggedInUserName();
+    console.log("This is the user ID : " + this.userId );
+    console.log("this is the user name : " + this.userName)
 
 
     this.authService.getProfile().subscribe({
@@ -60,13 +69,13 @@ export class QuestionsViewComponent implements OnInit {
       this.domainId = params.domainId;
       if(!this.languageId && !this.categoryId && !this.domainId) return;
       
-      if(this.languageId){
+      if(this.languageId ){
         this.questionService.getOneLanguageTitle(this.languageId)
           .subscribe((currentLanguage: any) => {
             this.currentLanguage = currentLanguage.title;
         });
           
-        this.questionService.getCategory(this.languageId)
+        this.questionService.getCategory(this.userId)
           .subscribe((categories: any) => this.categories = categories);
           console.log("String : " + this.categories);
       } 
@@ -80,6 +89,7 @@ export class QuestionsViewComponent implements OnInit {
       }
     });
   }
+  
 
   deleteDomain(domain: Domain) {
     if(confirm("Are you sure you want to delete selected domain?")){
@@ -107,7 +117,7 @@ export class QuestionsViewComponent implements OnInit {
     
   };
 
-  addNewCategory(){
+  addNewSurvey(){
     if(!this.languageId){
       alert("Please select a Language to add a question");
       return;
@@ -117,10 +127,10 @@ export class QuestionsViewComponent implements OnInit {
 
 
   addNewQuestion(){
-    if(!this.domainId){
-      alert("Please select a Domain to add a question");
-      return;
-    }
+    //if(!this.domainId){
+      //alert("Please select a Domain to add a question");
+      //return;
+    //}
     this.router.navigate(['./question-form'], {relativeTo: this.route });
   }
 

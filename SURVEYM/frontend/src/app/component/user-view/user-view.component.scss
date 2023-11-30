@@ -22,7 +22,7 @@
 
 .displayFlex {
     display: flex !important;
-    background-color: #2D804E;
+    background-color: #F7F8FB;
     border-radius: 10px;
     padding: 20px;
 }
@@ -78,8 +78,8 @@
 }
 
 .card{
-    background-color: #2D804E;
-    color: white;
+    background-color: s#F7F8FB;
+    color: #000;
     margin-top: 10%;
     margin-left: 30%;
     width: 400px;
@@ -104,3 +104,69 @@
     padding-top: 20px;
 }
 
+
+a{
+    text-decoration: none;
+}
+
+
+/* Survey Page */
+
+.sur_top {
+    padding: 4rem 10%;
+
+}
+
+.sur_top .sur_top_info{
+    padding-bottom: 2rem;
+}
+
+.Nbtn{
+    color: #F7F8FB;
+    padding: .6rem 1.2rem;
+    border-radius: 10px;
+    transform: all 1s ease;
+    border: none;
+    font-size: 1rem;
+}
+
+.Nbtn:hover{
+    background-color: #00BFFF;
+    color: #000835;
+}
+
+.nfooter .f_content{
+    padding: 1rem 10%;
+    text-align: center;
+    padding: 3rem;
+    margin-top: 8rem;
+
+}
+
+
+/* colors */
+.color1{
+    color: #0040D4;
+}
+.color2{
+    color: #000835;
+}
+.color3{
+    color: #00BFFF;
+}
+.color4{
+    color: #F7F8FB;
+}
+
+.bg1{
+    background-color: #000835;
+}
+.bg2{
+    background-color: #F7F8FB;
+}
+.bg3{
+    background-color: #0040D4;
+}
+.bg4{
+    background-color: #fff;
+}

@@ -1,9 +1,11 @@
 <div class="centered-content">
     <div class="modal-box form-group">
-        <h1 class="title"><b>Create New Category</b></h1>
-        <input #categoryInput type="text" class="form-control has-background-light" placeholder="Enter New Category">
+        <h1 class="title"><b>Create New Survey</b></h1>
+        <input #categoryInput type="text" class="form-control has-background-light" placeholder="Enter New Survey">
+        <input #categorydesInput type="text" class="form-control has-background-light" placeholder="Enter Survey Description">
 
-        <button class="btn btn-primary white-text" (click)="addCategory(categoryInput.value)">Add</button>
+        <button class="btn btn-primary white-text" (click)="addCategory(categoryInput.value,categorydesInput.value)">Add</button>
+
         <button class="btn btn-primary" routerLink="../">Cancel</button>
     </div>
 </div>

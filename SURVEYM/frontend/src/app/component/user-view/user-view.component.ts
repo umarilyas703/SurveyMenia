@@ -35,18 +35,31 @@ export class UserViewComponent implements OnInit {
   customerAge: string;
   customerGender: string;
   customers: Customer[] = [];
+  details: String[] = [];
   currentCustomer: string;
   currentClientId: string;
   customerId: string;
+  surveyId: string;
+  userId: string;
+  age: string;
+  gender: string;
+  currentCustomerage: string;
+  currentCustomergender: string;
+  currentCustomername: string;
+  creatorId: string;
+  category:any;
+  
 
   constructor(
     private questionService: QuestionsService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService 
+    private authService: AuthService ,
   ) { }
 
   ngOnInit(): void {
+
+    
 
     this.questionService.getCustomer()
       .subscribe((customers: any) => this.customers = customers);
@@ -55,6 +68,14 @@ export class UserViewComponent implements OnInit {
       .subscribe((languages: any) => {
         this.languages = languages;
       });
+
+      
+    
+
+
+    
+
+     
 
     this.route.params.subscribe((params: any) => { 
         if(params.languageId){
@@ -69,9 +90,19 @@ export class UserViewComponent implements OnInit {
             this.questionService.getOneCustomerTitle(this.customerId)
             .subscribe((currentcustomer: any) => {
                 this.currentCustomer = currentcustomer.title;
-                this.currentClientId = currentcustomer.clientId;
-            });
-        }
+                this.currentClientId = currentcustomer.userId;
+                this.currentCustomerage = currentcustomer.age;
+                this.currentCustomergender = currentcustomer.gender;
+                this.surveyId = currentcustomer.surveyId;
+
+                console.log("this is customer Age : " + this.currentCustomerage)
+                console.log("this is customer gender: "+ this.currentCustomergender)
+                console.log("this is customer survey: "+ this.surveyId)
+              });
+            }
+        
+           
+        
     
         if(this.languageId){
             this.questionService.getOneLanguageTitle(this.languageId)
@@ -80,7 +111,7 @@ export class UserViewComponent implements OnInit {
         })};
 
         console.log(this.newCategories);
-        this.questionService.getCategory(this.languageId)
+        this.questionService.getCategoryuser(this.languageId)
             .subscribe((categories: any) =>{ this.categories = categories});
     });
 
@@ -129,15 +160,19 @@ export class UserViewComponent implements OnInit {
         domainTitle=c.title
         this.responseArray.push({
           "customerName":this.customerName,
-          "customerAge":this.customerAge,
-          "customerGender":this.customerGender,
-            "customerId":this.customerId,
+          "customerAge":this.currentCustomerage,
+          "customerGender":this.currentCustomergender,
+          "creatorId": this.creatorId,
+            "customerId":this.userId,
             "category":this.newCategories[this.categoryIndex].title, 
             "categoryId": this.categoryId,
             "domain":domainTitle,
             "domainId": tempVar,
             "question":this.questions[this.questionIndex].title,
-            "response":event
+            "response":event,
+            
+
+
           });
         
         let currentDate = new Date().toLocaleDateString('en-AU',);
@@ -160,18 +195,28 @@ export class UserViewComponent implements OnInit {
     }
 
     categoriesSelected(){
-      if(this.selectedCategories.length==0){
-        alert("Please select categories to proceed, thank you");
-        return
-      }
+      //if(this.selectedCategories.length==0){
+       // alert("Please select categories to proceed, thank you");
+        //return
+      //}
+      console.log("This is the survey ID from the fucntion" + this.surveyId);
+      this.categoryId= this.surveyId;
+      
 
-      for(let i=0; i<this.selectedCategories.length; i++){
-        for(let j=0; j<this.categories.length; j++){
-          if(this.selectedCategories[i]===this.categories[j]._id){
-            this.newCategories.push(this.categories[j]);
+      this.questionService.getCategoryByCatId(this.categoryId).subscribe((category: any) => {
+        this.creatorId = category.userId;
+        console.log("this is the category by catID : " + this.creatorId);
+      });
+
+      for(let i=0; i<this.categories.length; i++){
+        
+          console.log("This is ID : " + this.categoryId)
+          console.log("This is id of : " + this.categories[i]._id)
+          if(this.categoryId===this.categories[i]._id){
+            this.newCategories.push(this.categories[i]);
           }
         }
-      }
+        
 
       this.getQuestion(this.newCategories[this.categoryIndex]._id);
 
@@ -179,7 +224,16 @@ export class UserViewComponent implements OnInit {
 
       this.catSelector=true;
       this.hideLanguage=true;
+
+      
+
+
+
     }
+
+   
+
+    
 
     onCatSelectChange($event: any){
       const id = $event.target.value;
@@ -202,8 +256,8 @@ export class UserViewComponent implements OnInit {
     
   onLogout(){
         this.authService.logout();
-        alert("You are now logged out");
-        this.router.navigate(['/login']);
+        
+        this.router.navigate(['/home']);
         return;
       }
 

@@ -1,7 +1,10 @@
 <div class="logo" (click)="redirectHome()">
   <img src="assets\images\survey_logo.png" alt="">
 </div>
+
+
 <div class="customer-drop">
+
     <div ngbDropdown class="d-inline-block lang">
     <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="currentCustomer">{{currentCustomer}}</button>
     <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentCustomer">Select Customer</button>
@@ -9,6 +12,7 @@
         <button class="btn btn-primary" ngbDropdownItem  *ngFor="let cust of customers" [routerLink] = "['/lang/customers/', cust._id]">
         {{cust.title}}
         </button>
+
     </div>
     </div>
 </div>

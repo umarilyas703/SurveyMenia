@@ -1,32 +1,33 @@
-<div class="logo">
-    <img src="assets\images\centrims_logo.jpg" alt="">
-</div>
-
-<div class="centered-content">
-    <div class="login-manager-container">
-        <div class="window">
-            <div class="loginForm">
-                <form [formGroup]="loginForm">
-                    <h1 class="has-text-primary white-text">Log in</h1>
-
-                    <label for="uname" class="has-text-primary white-text"><b>Email</b></label>
-                    <input formControlName="email" [(ngModel)]="username" username="username" type="text" placeholder="Enter Email" name="uname" required>
-
-                    <label for="psw" class="has-text-primary white-text"><b>Password</b></label>
-                    <input formControlName="password" [(ngModel)]="password" password="password" type="password" placeholder="Enter Password" name="psw" required>
-
-                    <div class="button-center">
-                        <button type="submit" class="btn btn-primary add-button" (click)="onSuccessfulLogin()">Login</button>
-                        
-                        
-                    </div>
-                    <div class="button-center">
-                        <button class="btn btn-primary add-button" (click)="registerForm()"> Don't have account? Signup</button>
-                    </div>
-
-                    
-                </form>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Mania</title>
+    <link rel="stylesheet" href="login.component.scss">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="logpage bg2">
+   <section class="loginsec1 bg4">
+    <div class="loginhead">
+        <img src="img/logo.png" alt="" width="50%">
+        <p>User Login</p>
     </div>
-</div>
+    <form [formGroup]="loginForm">
+        <div class="login_container">
+            <label for="email"><i class='bx bx-envelope'></i> Email</label>
+            <input formControlName="email" [(ngModel)]="username" username="username" type="email" placeholder="Enter User Email" name="email" required>
+            <label for="password"><i class='bx bx-key' ></i> Password</label>
+            <input formControlName="password" [(ngModel)]="password" password="password" type="password" placeholder="Enter User Password" name="password" required>
+            <button class="bg3" (click)="onSuccessfulLogin()" type="submit">Login</button>
+          </div>
+    </form>
+    <div class="login_foot">
+        <p class="logfootpa">Dont Have an Account? <a href="/register">Register Now!</a></p>
+        <hr>
+        <p class="logfootp"><a  href="/home"> <i class='bx bx-arrow-back' ></i> Back To Home</a></p>
+    </div>
+   </section>
+</body>
+</html>

@@ -1,26 +1,26 @@
-<div class="logo" (click)="redirectHome()">
-    <img src="assets\images\survey_logo.png" alt="">
-</div>
+
 <div class="customer-drop" *ngIf="!customerId">
     <div ngbDropdown class="d-inline-block lang">
         
-        <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="currentCustomer">{{currentCustomer}}</button>
-        <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentCustomer">Select Customer</button>
+        <button type="button" class="Nbtn bg3" id="dropdownBasic1" ngbDropdownToggle *ngIf="currentCustomer">{{currentCustomer}}</button>
+        <button type="button" class="Nbtn bg3" id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentCustomer">Select Survey</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
             <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-            <button class="btn btn-primary" ngbDropdownItem  *ngFor="let cust of customers" [routerLink] = "['/user/', cust._id]">
-            {{cust.title}} - {{cust.clientId}}
+            <button class="Nbtn bg3" ngbDropdownItem  *ngFor="let cust of customers" [routerLink] = "['/user/', cust._id]">
+            {{cust.title}} 
             </button>
+            <button class="Nbtn bg3">User id is : {{userId}}</button>
             
         </div>
     </div>
 </div>
+
 <div *ngIf="customerId">
     <div class="row drop-down" *ngIf="hideLanguage==false">
         <div class="col">
           <div ngbDropdown class="d-inline-block">
-            <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="currentLanguage">{{currentLanguage.title}}</button>
-                <button type="button" class="btn btn-primary " id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentLanguage">Select Language</button>
+            <button type="button" class="Nbtn bg3" id="dropdownBasic1" ngbDropdownToggle *ngIf="currentLanguage">{{currentLanguage.title}}</button>
+                <button type="button" class="Nbtn bg3" id="dropdownBasic1" ngbDropdownToggle *ngIf="!currentLanguage">Select Language</button>
                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
                   <button class="btn btn-primary" ngbDropdownItem  *ngFor="let lang of languages" [routerLink] = "['/user/',customerId, lang._id]" (click)="categoryIndex=0">
                     {{lang.title}}
@@ -29,7 +29,22 @@
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary current-user">Attempting Survey For : {{currentCustomer}}</button>
+
+    
+    <section class="sur_top bg4">
+        <div class="sur_top_info">
+            <h1>Survey Title</h1>
+            <p>Survey Description</p>
+        </div>
+        <div class="sur_top_user">
+            <h4>Survey Attemted By: {{currentCustomer}}</h4> 
+        </div>
+
+        <div class = "" *ngIf="hideLanguage==false">
+            <button class="Nbtn bg3" (click)="onLogout()">Log out</button>
+        </div>
+    </section>
+
     <div class="centered-content">
 
         <!---------------------------------------------------------ALL LANGUAGES-------------------------------->
@@ -38,36 +53,17 @@
             <div class="form-check form-check-inline form-position" *ngIf="currentLanguage && catSelector==false">
                 <br>
                 <br><br>
-                <form >
-                <div>
-                    
-                        <b>Enter Name:</b>
-                        <input type="text" [(ngModel)]="customerName"  placeholder="Search.." id="customerName"> 
-                        <br>
-                        <b>Enter your Age: </b>
-                        <input type="text" [(ngModel)]="customerAge" placeholder="Search.." id="customerName"> 
-                        <br>
-                        <b>Select your Gender: </b>
-                        <br>
-                        <input type="radio" id="male" [(ngModel)]="responseArray.customerGender" name="fav_language" value="Male">
-                        <label for="html">Male</label>
-                        <input type="radio" id="female"  name="fav_language" value="Female">
-                        <label for="css">Female</label><br>
-                        </div>
-                    </form>
+                
 
 
                     <br>
-                    <br><br> <b>Select The Category: </b>
+                    <br><br> 
 
-                    <div *ngFor="let cat of categories">
-                        
-                       <input type="checkbox" [value]="cat._id" (change)="onCatSelectChange($event)"> {{cat.title}}
-                    </div>
+                   
                 
                 <br>
                 <div>
-                    <button class="btn btn-primary" (click)="categoriesSelected()">Continue</button>
+                    <button class="Nbtn bg3" (click)="categoriesSelected()">Continue</button>
                 </div>
             </div>
         </div>
@@ -77,8 +73,8 @@
             <div>
                 <br><br>
                 <div class="question-box" *ngIf="questions.length>0">
-                    <h5  *ngIf="questions[questionIndex]"><b>{{questions[questionIndex].title}}</b>
-                    </h5>
+                    <h2  *ngIf="questions[questionIndex]"><b>{{questions[questionIndex].title}}</b>
+                    </h2>
                 </div><br>
                 
                 <div class="displayFlex row ">
@@ -88,7 +84,7 @@
                                 <input type="radio" value="strongly disagree" [(ngModel)]="userResponse"  name="options" (click)="submitAnswer('Strongly Disagree')">
                             </div>
                             <div class="col-sm-12 center-el">
-                                <label class="radio-inline">
+                                <label class="radio-inline color2">
                                     {{currentLanguage.sdagree}}
                                 </label>
                             </div>
@@ -105,7 +101,7 @@
                                 <input type="radio" value="disagree" [(ngModel)]="userResponse"  name="options" (click)="submitAnswer('Disagree')">
                             </div>
                             <div class="col-sm-12 center-el">
-                                <label class="radio-inline">
+                                <label class="radio-inline color2">
                                     {{currentLanguage.dagree}}
                                 </label>
                             </div>
@@ -123,7 +119,7 @@
                                 <input type="radio" value="neutral" [(ngModel)]="userResponse"  name="options" (click)="submitAnswer('Neutral')">
                             </div>
                             <div class="col-sm-12 center-el">
-                                <label class="radio-inline">
+                                <label class="radio-inline color2">
                                     {{currentLanguage.neutral}}
                                 </label>
                             </div>
@@ -140,7 +136,7 @@
                                 <input type="radio" value="agree" [(ngModel)]="userResponse" name="options" (click)="submitAnswer('Agree')">
                             </div>
                             <div class="col-sm-12 center-el">
-                                <label class="radio-inline">
+                                <label class="radio-inline color2">
                                     {{currentLanguage.agree}}
                                 </label>
                             </div>
@@ -157,7 +153,7 @@
                                 <input type="radio" value="strongly agree" [(ngModel)]="userResponse" name="options" (click)="submitAnswer('Strongly Agree')">
                             </div>
                             <div class="col-sm-12 center-el">
-                                <label class="radio-inline">
+                                <label class="radio-inline color2">
                                     {{currentLanguage.sagree}}
                                 </label>
                             </div>
@@ -174,10 +170,10 @@
             <div class="footer" id="wrapper">
                 <div>  
                     <br>
-                    <button class="btn btn-primary white-text button" *ngIf="!checkSubmissions() && nextButtonCheck"  (click)="nextQuestion()"><b>>></b></button>
+                    <button class="btn Nbtn bg3" *ngIf="!checkSubmissions() && nextButtonCheck"  (click)="nextQuestion()">Next Question</button>
                 </div>
             </div>
-            <button class="btn btn-primary white-text button" *ngIf="checkSubmissions() && nextButtonCheck" (click)="sendResponses()">>></button>
+            <button class="btn Nbtn bg3" *ngIf="checkSubmissions() && nextButtonCheck" (click)="sendResponses()">Submit</button>
         </div>
 
 
@@ -195,6 +191,12 @@
     </div>
     
 </div>
-<div class = "logout" *ngIf="hideLanguage==false">
-    <button class="btn btn-primary" (click)="onLogout()">Log out</button>
-</div>
+
+
+
+
+<footer class="nfooter">
+    <div class="f_content bg2 color2">
+        <p>© 2023 - Survey Mania</p>
+    </div>
+</footer>

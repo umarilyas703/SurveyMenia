@@ -73,6 +73,10 @@ export class LoginComponent implements OnInit {
     console.log('Sign Up Button Click')
     this.router.navigate(['/register']);
   }
+  homePage(){
+    
+    this.router.navigate(['/home']);
+  }
 
 }
 

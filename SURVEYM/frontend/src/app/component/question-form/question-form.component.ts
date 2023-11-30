@@ -27,7 +27,7 @@ export class QuestionFormComponent implements OnInit {
 
   addQuestion(value: string){
     console.log(this.domainId + " Domain Id");
-    this.questionService.createQuestion(this.categoryId, this.domainId, value)
+    this.questionService.createQuestion(this.categoryId, value, this.domainId)
       .subscribe(()=>this.router.navigate(['../'], {relativeTo: this.route}));
   }
 

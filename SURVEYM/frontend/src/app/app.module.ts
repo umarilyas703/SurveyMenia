@@ -21,6 +21,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LanguageFormComponent } from './component/language-form/language-form.component';
 import { AdminGuard } from './guards/admin.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomepageComponent } from './component/homepage/homepage.component';
 //import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
@@ -34,7 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomerFormComponent,
     CustomerViewComponent,
     RegisterComponent,
-    LanguageFormComponent
+    LanguageFormComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

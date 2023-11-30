@@ -1,36 +1,44 @@
-<div class="logo">
-    <img src="assets\images\survey_logo.png" alt="">
-</div>
-
-<div class="centered-content">
-    <div class="register-manager-container">
-        <div class = "window">
-            <div class="registerForm">
-                <form [formGroup]="registerForm">
-                    <h1 class="has-text-primary white-text">Register</h1>                    
-
-                    <label for="fname" class="has-text-primary white-text"><b>First Name</b></label>
-                    <input formControlName ="fnameCheck" [(ngModel)]="fname" fname="fname" type="text" placeholder="Enter First Name" name="fname" required>
-
-                    <label for="lname" class="has-text-primary white-text"><b>Last Name</b></label>
-                    <input formControlName ="lnameCheck" [(ngModel)]="lname" lname="lname" type="text" placeholder="Enter Last Name" name="lname" required>
-
-                    <label for="uname" class="has-text-primary white-text"><b>Email</b></label>
-                    <input formControlName ="emailCheck" [(ngModel)]="username" username="username" type="text" placeholder="Enter Email" name="uname" required>
-
-                    <label for="psw" class="has-text-primary white-text"><b>Password</b></label>
-                    <input formControlName ="passwordCheck" [(ngModel)]="password" password="password" type="password" placeholder="Enter Password" name="psw" required>
-
-                    <label for="cpsw" class="has-text-primary white-text"><b>Confirm Password</b></label>
-                    <input formControlName ="cpasswordCheck" type="password" placeholder="Enter Password" name="cpsw" required>
-
-                    <div class="button-center">
-                        <button type="submit" class="btn btn-primary add-button" (click) = "register()">Submit</button> &nbsp;
-                        <button type="submit" class="btn btn-primary add-button" (click) = "moveBack()">Back</button>
-                    </div>
-                </form>
-            </div>           
-            
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Mania</title>
+    <link rel="stylesheet" href="register.component.scss">
+    <link rel="shortcut icon" href="img/icon.png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body class="logpage bg2">
+   <section class="loginsec1 bg4">
+    <div class="loginhead">
+        <img src="img/logo.png" alt="" width="50%">
+        <p>User Registration</p>
     </div>
-</div>
+    <form [formGroup]="registerForm">
+        <div class="login_container">
+            <label for="fname"><i class='bx bxs-user-detail' ></i> First Name</label>
+            <input type="text"formControlName ="fnameCheck" [(ngModel)]="fname" fname="fname" placeholder="Enter your First Name" name="fname" required>
+
+            <label for="lname"><i class='bx bxs-user-detail' ></i> Last Name</label>
+            <input type="text"formControlName ="lnameCheck" [(ngModel)]="lname" lname="lname" placeholder="Enter your Last Name" name="lname" required>
+
+            <label for="email"><i class='bx bx-envelope'></i> Email Address</label>
+            <input type="email" formControlName ="emailCheck" [(ngModel)]="username" username="username" type="text" placeholder="Enter Email" name="uname" required>
+
+            <label for="password"><i class='bx bx-key' ></i> Password</label>
+            <input type="password" formControlName ="passwordCheck" [(ngModel)]="password" password="password" type="password" placeholder="Enter Password" name="psw" required>
+
+            <label for="password"><i class='bx bx-key' ></i> Confirm Password</label>
+            <input type="password" formControlName ="cpasswordCheck" type="password" placeholder="Enter Password" name="cpsw" required>
+
+            <button class="bg3" type="submit" (click) = "register()">Register</button>
+          </div>
+    </form>
+    <div class="login_foot">
+        <p class="logfootpa">Have an Account? <a href="/login">Login!</a></p>
+        <hr>
+        <p class="logfootp"><a  (click) = "moveBack()"> <i class='bx bx-arrow-back' ></i> Back To Home</a></p>
+    </div>
+   </section>
+</body>
+</html>

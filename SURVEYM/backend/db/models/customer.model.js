@@ -7,7 +7,17 @@ const CustomerSchema = new mongoose.Schema({
         trim: true,
         minLength: 1
     },
-    clientId: {
+    age: {
+        type: String,
+        trim: true,
+        minLength: 1
+    },
+    gender: {
+        type: String,
+        trim: true,
+        minLength: 1
+    },
+    surveyId: {
         type: String,
         trim: true,
         minLength: 1

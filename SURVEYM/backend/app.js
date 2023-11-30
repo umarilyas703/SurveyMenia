@@ -47,6 +47,18 @@ app.get('/category', (req, res)=> {
         .catch((err) => console.log(err));
 })
 
+app.get('/category/:userId', async (req, res) => {
+    const userId = req.params.userId;
+  
+    try {
+      const categories = await Category.find({ userId });
+      res.json(categories);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 app.get('/category/:categoryId', (req, res) => {
     Category.findOne({_id: req.params.categoryId})
         .then(category => res.send(category))
@@ -58,9 +70,18 @@ app.get('/:languageId/category', (req, res)=> {
         .then(category => res.send(category))
         .catch((err) => console.log(err));
 })
+app.get('/categories', async (req, res) => {
+    try {
+      const { userId } = req.query;
+      const categories = await Category.find({ userId });
+      res.status(200).json(categories);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 app.post('/:languageId/category', (req, res) => {
-    (new Category({'title': req.body.title, '_languageId': req.params.languageId}))
+    (new Category({'title': req.body.title, 'userId':req.body.userId, 'sruveyDescription': req.body.surveyDescription ,'_languageId': req.params.languageId}))
         .save()
         .then((category) => res.send(category))
         .catch((err) => console.log(err));
@@ -319,7 +340,7 @@ app.get('/customer/:customerId', (req, res) => {
 })
 
 app.post('/customer', (req, res) => {
-    (new Customer({'title': req.body.title, 'clientId': req.body.clientId}))
+    (new Customer({'title': req.body.title, 'clientId': req.body.userId, 'age':req.body.age, 'gender':req.body.gender, 'surveyId':req.body.surveyId}))
         .save()
         .then((customer) => res.send(customer))
         .catch((err) => console.log(err));
@@ -550,7 +571,7 @@ app.get('/customer/:customerId', (req, res) => {
 })
 
 app.post('/customer', (req, res) => {
-    (new Customer({'title': req.body.title, 'clientId': req.body.clientId}))
+    (new Customer({'title': req.body.title, 'age': req.body.age, 'gender':req.body.gender, 'surveyId':req.body.surveyId}))
         .save()
         .then((customer) => res.send(customer))
         .catch((err) => console.log(err));

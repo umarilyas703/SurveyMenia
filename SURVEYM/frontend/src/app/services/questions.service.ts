@@ -21,12 +21,22 @@ export class QuestionsService {
     return this.webService.get(`language/${languageId}`)
   }
 
-  getCategory(languageId: string){
+  getCategory(userId:string){
+    return this.webService.get(`categories?userId=${userId}`)
+  }
+
+  getCategoryuser(languageId: string){
     return this.webService.get(`${languageId}/category`)
   }
 
-  createCategory(languageId: string, title: string){
-    return this.webService.post(`${languageId}/category`, {title});
+  
+
+  getCategorydetail(catId: string){
+    return this.webService.get(`categories?_id=${catId}`)
+  }
+
+  createCategory(languageId: string, title: string, surveyDescription:string, userId:string){
+    return this.webService.post(`${languageId}/category`, {title, surveyDescription, userId} );
   }
 
   deleteCategory(categoryId: string){
@@ -41,7 +51,7 @@ export class QuestionsService {
     return this.webService.get(`category/${categoryId}/questions`);
   }
 
-  createQuestion(categoryId: string, domainId: string, title: string){
+  createQuestion(categoryId: string, title: string, domainId: string){
     return this.webService.post(`category/${categoryId}/domains/${domainId}/questions`, {title});
   }
 
@@ -65,8 +75,10 @@ export class QuestionsService {
     return this.webService.delete(`domains/${domainId}/`);
   } 
 
-  createCustomer(title: string, clientId: string){
-    return this.webService.post(`customer`, {title, clientId});
+  createCustomer(title: string, age: string, gender: string, surveyId:string){
+    
+    return this.webService.post(`customer`, {title, age, gender, surveyId});
+    
   }
 
   createLanguage(title: string, sagree: string, agree: string, neutral: string, dagree: string, sdagree: string){
@@ -79,6 +91,10 @@ export class QuestionsService {
 
   getOneCustomerTitle(customerId: string){
     return this.webService.get(`customer/${customerId}`)
+  }
+
+  getCategoryByCatId(catId: string){
+    return this.webService.get(`category/${catId}`)
   }
 
   createResponse(customerName: string, clientId: string, customerId: string, categoryName: string, _categoryId: string, domainName: string, _domainId: string, question: string, response: string, date: string){

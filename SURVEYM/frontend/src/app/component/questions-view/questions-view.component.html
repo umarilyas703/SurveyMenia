@@ -1,5 +1,5 @@
 
-  <div class="logo" >
+<div class="logo" >
     <img src="assets\images\survey_logo.png" alt="">
   </div>
 <div class="centered-container">
@@ -29,7 +29,7 @@
 
     <div class="question-manager-container">
         <div class="sidebar">
-            <h1 class="has-text-primary white-text">Category</h1>
+            <h1 class="has-text-primary white-text">Survey</h1>
             <div class="list-menu">
                 
                 <a class="list-menu-item" *ngFor = "let cat of categories" [routerLink] = "['/lang/', cat._languageId, 'category', cat._id]" routerLinkActive = "is-active">
@@ -38,7 +38,7 @@
                     </p>   
                 </a>
             </div>
-            <button class="btn btn-primary add-button" (click)="addNewCategory()">Add Category</button>
+            <button class="btn btn-primary add-button" (click)="addNewSurvey()">Add New Survey</button>
         </div>
 
         
@@ -63,9 +63,12 @@
                 </p>  
             </div>
             <button class="btn btn-primary add-button" (click)="addNewQuestion()">Add Questions</button>
-            <button class="btn btn-primary add-button" >{{categoryId}}</button>
+            <div class="text">
+                <p class="white-text" >Use this ID to share the survey : {{categoryId}}</p>
+            </div>
 
         </div>
+        
     </div>
     
 </div>

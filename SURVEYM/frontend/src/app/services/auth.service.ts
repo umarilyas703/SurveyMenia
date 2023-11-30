@@ -56,7 +56,25 @@ export class AuthService {
     localStorage.setItem('role', JSON.stringify(role));
     this.authToken = token;
     this.user = user; 
-    this.role = role;     
+    this.role = role; 
+        
+  }
+
+  storeEuserData(token: any, user: any){    
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));     
+    
+    this.authToken = token;
+    this.user = user; 
+    
+        
+  }
+
+  getLoggedInUserId(): string {
+    return this.user ? this.user.id : null;
+  }
+  getLoggedInUserName(): string{
+    return this.user ? this.user.fname: null;
   }
 
   loadToken(){

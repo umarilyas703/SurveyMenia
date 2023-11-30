@@ -1,53 +1,390 @@
-@import '../../../main.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-.button-center{
-    text-align: center;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
-h1{
-    text-align: center;
+/* navigation */
+
+li, a{
+    font-weight: 500;
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10%;
+}
+.logo{
+    cursor: pointer;
+
+}
+.nav{
+    list-style: none;
 }
 
-input[type=text], input[type=password] {
+a{
+    text-decoration: none;
+}
+    
+.nav li{
+    display: inline-block;
+
+}
+.nav li a{
+    color: #000835;
+    padding: 1rem 1rem;
+    transform: all 0.5s ease 0.5s;
+}
+.nav li a:hover{
+    color: #0040D4;
+    font-weight: 600;
+
+}
+.btn{
+    color: #F7F8FB;
+    padding: .6rem 1.2rem;
+    border-radius: 10px;
+    transform: all 1s ease;
+}
+.btn:hover{
+    background-color: #00BFFF;
+    color: #000835;
+}
+
+/* media quary  */
+@media (max-width: 800px) {
+    .navigation{
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav li{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* cover */
+.sec1{
+    background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .5)), url(img/sec1_bg.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
+.sec1_content{
+    text-align: center;
+    padding: 10rem 10%;
+    justify-content: center;
+}
+.sec1_content h1{
+    font-size: 3rem;
+    margin-bottom: .5rem;
+    color: #00BFFF;
+}
+.sec1_content p{
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.sec1_content a{
+    color: #fff;
+    padding: .8rem 1.6rem;
+    border-radius: 10px;
+    border: 2px #00BFFF solid;
+    
+    transform: all 1s ease;
+}
+.sec1_content a:hover{
+    background-color: #00BFFF;
+    color: #fff;
+
+}
+
+/* about */
+.sec2{
+    display: flex;
+    padding: 1rem 10%;
+    gap: 4%;
+}
+
+.sec2 .leftitem{
+    flex: 38%;
+
+}
+.sec2 .leftitem img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.sec2 .rightitem{
+    flex: 58%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2.5rem;
+}
+
+.sec2 .rightitem h1{
+    font-size: 2rem;
+    padding-top: 3.5rem;
+    padding-bottom: 1rem;
+    color: #0040D4;
+
+}
+.sec2 .rightitem p{
+    padding-bottom: 2rem;
+
+}
+
+.sec2 .rightitem a{
+    color: #000835;
+    padding: .6rem 1.2rem;
+    border-radius: 10px;
+    border: 2px #00BFFF solid;
+    
+    transform: all 1s ease;
+}
+.sec2 .rightitem a:hover{
+    background-color: #00BFFF;
+    color: #fff;
+}
+
+/* media quary  */
+@media (max-width: 800px) {
+    .sec2{
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+}
+
+/* our team */
+
+.team{
+    padding: 1rem 10%;
+}
+.team .sectitle{
+    text-align: center;
+}
+.team .sectitle h1{
+    font-size: 2rem;
+    color: #0040D4;
+    margin-bottom: .5rem;
+    padding-top: 2rem;
+
+}
+.team .sectitle p{
+    margin-bottom: 1rem;
+    padding-bottom: 1.6rem;
+}
+.team .container{
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 2fr));
+    grid-template-rows: 1fr;
+    padding-bottom: 2rem;
+}
+.team .container .infocard{
+    cursor:pointer;
+    text-align: center;
+    border-radius: 16px;
+    border:1px solid #bbb;
+    padding: 1rem;
+}
+.team .container .infocard .info_img{
+    width: 50%;
+    border-radius: 100rem;
+}
+.team .container .infocard h3{
+    font-size: 1.2rem;
+    color: #000835;
+}
+
+.team .container .infocard p{
+    padding-bottom: 1rem;
+}
+
+.team .container .infocard .card_sub_t{
+    color: #0040D4;
+    font-weight: 500;
+}
+
+.team .container .infocard a{
+
+    color: #000835;
+    padding: .3rem 3rem;
+    border-radius: 100px;
+    border: 2px #00BFFF solid;
+    
+    transform: all 1s ease;
+}
+.team .container .infocard a:hover{
+    background-color: #00BFFF;
+    color: #fff;
+}
+
+/* contact */
+.conta{
+    text-align: center;
+    padding: 6rem 10%;
+    justify-content: center;
+}
+.conta .con_items h1{
+    font-size: 2rem;
+    color: #0040D4;
+    margin-bottom: .5rem;
+
+}
+.conta .con_items p{
+    padding-bottom: 2rem;
+}
+.conta .con_items a{
+    color: #F7F8FB;
+    background-color: #0040D4;
+    padding: .6rem 1.2rem;
+    border-radius: 100px;
+    
+    transform: all 1s ease;
+}
+.conta .con_items a:hover{
+    background-color: #00BFFF;
+    color: #000835;
+}
+
+
+/* footer */
+
+.footer .f_content{
+    padding: 1rem 10%;
+    text-align: center;
+    padding: 2rem;
+
+}
+
+
+/* login page */
+
+.logpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logpage .loginsec1 {
+    padding: 3.5rem;
+    border-radius: 16px;
+    width: 35rem;
+    margin: 4rem;
+}
+
+/* media quary  */
+@media (max-width: 800px) {
+    .logpage .loginsec1 {
+        padding: 2rem;
+        margin: 2rem;
+    }
+}
+
+/* media quary  */
+@media (max-width: 600px) {
+    .logpage .loginsec1 {
+        padding: .8rem;
+        margin: 1rem;
+    }
+}
+
+.logpage .loginsec1 .loginhead{
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.logpage .loginsec1 .loginhead p{
+    font-size: 1.5rem;
+    padding-top: 2rem;
+    color: #000835;
+    font-weight: 500;
+    opacity: 80%;
+}
+.logpage .loginsec1 .login_container{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+}
+
+.logpage .loginsec1 .login_container input{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 16px;
+
 }
 
-.register-manager-container {
-    display: flex;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 5%;
-    width:100%;
-    height:100%;
-    max-width:1215px;
-    max-height:120px;
-    justify-content: center;
-    align-items: center;
-    //border-radius: 8px 0px 0px 8px;
+.logpage .loginsec1 .login_container button{
+  padding: 12px 20px;
+  margin: 16px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  color: #F7F8FB;
+  border-radius: 16px;
+  transform: all 1s ease;
+  font-size: 1rem;
+}
+
+.logpage .loginsec1 .login_container button:hover{
+    background-color: #00BFFF;
+    color: #000835;
+}
+
+.logpage .loginsec1 .loging_foot{
+    text-align: center;
+
+}
+.logpage .loginsec1 .login_foot .logfootpa{
+    padding-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1rem;
     
 }
 
-.window{    
-    background: #302c2c;    
-    border-radius: 8px 8px 8px 8px;
-    width: 550px;
-    height:600px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.logpage .loginsec1 .login_foot .logfootp{
+    text-align: center;
+    padding-top: 1.5rem;
 }
 
-.logo {
-    position: absolute;
-    top: 6%;
-    left: 20%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
+i{
+    color: #000835;
+    opacity: 60%;
+}
+
+
+/* colors */
+.color1{
+    color: #0040D4;
+}
+.color2{
+    color: #000835;
+}
+.color3{
+    color: #00BFFF;
+}
+.color4{
+    color: #F7F8FB;
+}
+
+.bg1{
+    background-color: #000835;
+}
+.bg2{
+    background-color: #F7F8FB;
+}
+.bg3{
+    background-color: #0040D4;
+}
+.bg4{
+    background-color: #fff;
 }
