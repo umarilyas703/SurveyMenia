@@ -23,19 +23,19 @@ export class AuthService {
   registerUser(user: any){
     let headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/register', user, {headers: headers});
+    return this.http.post('https://survey-menia-backend2.onrender.com/register', user, {headers: headers});
 
       //.pipe(map(res => JSON.stringify(res)));
   }
 
   getbycode(code:any){
-    return this.http.get('http://localhost:3000/register' + '/' + code);
+    return this.http.get('https://survey-menia-backend2.onrender.com/register' + '/' + code);
   }
 
   authenticateUser(user: any){
     let headers = new HttpHeaders();
     headers.append('Content-type', 'application/json');
-    return this.http.post('http://localhost:3000/authenticate', user, {headers: headers});
+    return this.http.post('https://survey-menia-backend2.onrender.com/authenticate', user, {headers: headers});
   }  
 
   getProfile(){
@@ -43,11 +43,11 @@ export class AuthService {
     this.loadToken();    
     headers = headers.append('Authorization', this.authToken);
     headers = headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/profile', {headers: headers});
+    return this.http.get('https://survey-menia-backend2.onrender.com/profile', {headers: headers});
   }
 
   Updateuser(user: any, code:any){
-    return this.http.put('http://localhost:3000/register', user, code)
+    return this.http.put('https://survey-menia-backend2.onrender.com/register', user, code)
   }
 
   storeUserData(token: any, user: any, role: any){    
