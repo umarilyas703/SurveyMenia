@@ -43,7 +43,7 @@
 
         
         <div class="domainSidebar">
-            <h1 class="has-text-primary white-text">Domain</h1>
+            <h1 class="has-text-primary white-text">Survey Category</h1>
             <div class="list-menu">
                 <div class="list-menu-item" *ngFor = "let d of domains" [routerLink] = "['/lang/', languageId ,'category', d._categoryId ,'domains', d._id]" routerLinkActive = "is-active">
                     <p class="white-text">
@@ -52,7 +52,7 @@
                     </p>
                 </div>                
             </div>
-            <button class="btn btn-primary add-button" (click)="addNewDomain()">Add Domain</button>
+            <button class="btn btn-primary add-button" (click)="addNewDomain()">Add category</button>
         </div>        
 
         <div class="question-list-container">

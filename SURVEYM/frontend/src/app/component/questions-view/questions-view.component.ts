@@ -27,6 +27,7 @@ export class QuestionsViewComponent implements OnInit {
   user: Object;
   userId: string;
   userName: string;
+  engId: string;
 
   constructor(
     private questionService: QuestionsService,
@@ -65,6 +66,8 @@ export class QuestionsViewComponent implements OnInit {
     this.route.params.subscribe((params: any) => {
 
       this.languageId = params.languageId;
+      this.engId = '634d072d9bbb95c30c7b183c';
+
       this.categoryId = params.categoryId;
       this.domainId = params.domainId;
       if(!this.languageId && !this.categoryId && !this.domainId) return;

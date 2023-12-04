@@ -7,7 +7,7 @@ import { HttpClient} from "@angular/common/http";
 export class WebService {
   readonly ROOT_URL;
   constructor(private http: HttpClient) {     
-    this.ROOT_URL = "http://localhost:3000";
+    this.ROOT_URL = "https://survey-menia-backend2.onrender.com";
   }
 
   get(uri: String) {

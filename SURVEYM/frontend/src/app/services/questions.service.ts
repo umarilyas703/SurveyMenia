@@ -85,8 +85,12 @@ export class QuestionsService {
     return this.webService.post(`language`, {title, sagree, agree, neutral, dagree, sdagree});
   }
 
+  getOneCustomer(userId: string){
+    return this.webService.get(`customer?_id=${userId}`)
+  }
+
   getCustomer(){
-    return this.webService.get('customer')
+    return this.webService.get(`customer`)
   }
 
   getOneCustomerTitle(customerId: string){
