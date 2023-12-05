@@ -1,0 +1,30 @@
+Survey Mania
+
+This is a Survey web application whose main vision is to give a new and easy solution to the user to conduct their surveys easily. User can do their survey by registering themselves on the website and creating different types of surveys in 3 predefined languages: English, Arabic, and Urdu, or users can add languages on their own. After the survey conductor creates a survey, he can share survey ID with participants and they can easily give response to the survey. It is so simple it’s easy to use, easy to create a survey, and easy to participate.
+
+Project Author and Role
+•	Hafiz Muhammad Umar (Full Stack Developer)
+•	Ibrahim Mahbub (Front-end Developer)
+•	Tahmid Nur Refat (Back-end Developer)
+•	Iqbal Hossen (Database Developer)
+•	Kanak Chakma (Front-end Developer)
+
+Project Version
+•	1.0.0
+
+Technical Specification
+
+This Web Application is built on HTML, CSS, Angular JS, Node JS, and Mongo DB. HTML and CSS are used to develop the front end, mainly the landing page, Registration, and Login Page. Angular JS is being used on the front-end side while its backend is in Node.js. Also used jwt authentication and used cors library as middleware.
+
+Hosting on the Live Server
+
+•	Backend deployed on Render and used Atlas mongodb cloud for DB storage.
+•	Frontend deployed on Vercel.
+•	Managed CICD pipeline, so that new release can be deployed automatically..
+
+How to Use 
+
+As it’s a web application anyone can use it on any browser of any device. But it’s recommended to use it on desktop mode for a better experience.
+
+Future Update
+In the future, the team will update on the security phase, target to implement more languages, and reduce the delay of response by hosting on a good server and solving other issues.
